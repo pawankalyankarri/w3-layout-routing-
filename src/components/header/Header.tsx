@@ -13,6 +13,8 @@ const Header = () => {
                 <li><NavLink to="js">Java script</NavLink></li>
                 <li><NavLink to="react">React</NavLink></li>
                 <li><NavLink to="html">HTML</NavLink></li>
+                <li><NavLink to='employees'>Employees</NavLink></li>
+                <li>Students</li>
             </ul>
         </div>
     )
