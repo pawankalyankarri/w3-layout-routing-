@@ -8,6 +8,8 @@ import {
   ReactSidebarOptions,
 } from "../javascriptcomponents/JsSidebarDetails";
 import JsBody from "../javascriptcomponents/JsBody";
+import Employees from "../Employees";
+import EmployeeDetails from "../EmployeeDetails";
 
 const TutorialRoutesArr = [
   { index: true, element: <Main /> },
@@ -17,6 +19,7 @@ const TutorialRoutesArr = [
     children: JsSidebarOptions.map((item) => {
       return { path: `:${item.replace(" ", "_")}`, element: <JsBody /> };
     }),
+    
   },
   {
     path: "html",
@@ -32,6 +35,14 @@ const TutorialRoutesArr = [
       return { path: `:${item.replace(" ", "_")}`, element: <JsBody /> };
     }),
   },
+  {
+    path : 'employees',
+    element : <Employees/>
+  },
+  {
+    path : 'employees/:id',
+    element : <EmployeeDetails/>
+  }
 ];
 
 export default TutorialRoutesArr;
