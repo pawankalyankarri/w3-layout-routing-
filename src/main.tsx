@@ -5,11 +5,7 @@ import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import  NotFound from './components/NotFound.tsx'
 
-import Profile from './components/sidebar/Profile.tsx'
-import Orders from './components/sidebar/Orders.tsx'
-import Main from './components/body/Main.tsx'
 
-import Navbar from './components/navbar/Navbar.tsx'
 import TutorialRoutesArr from './components/routeconfiguration/TutorialRoutes.tsx'
 
 const router = createBrowserRouter([
@@ -17,7 +13,6 @@ const router = createBrowserRouter([
     path : '/',
     element : <App/>,
     errorElement : <NotFound/> ,
-
     children : TutorialRoutesArr.map(route=>route)
     
   }

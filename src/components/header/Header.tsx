@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 const Header = () => {
     return(
-        <div>
+        <div className="">
             <ul className="flex justify-evenly p-5">
                 <li><NavLink to="tutorial">Tutorial</NavLink></li>
                 <li><NavLink to="reference">Reference</NavLink></li>
