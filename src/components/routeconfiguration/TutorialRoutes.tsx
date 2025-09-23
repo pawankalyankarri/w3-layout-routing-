@@ -12,6 +12,7 @@ import Employees from "../Employees";
 import EmployeeDetails from "../EmployeeDetails";
 import PostsPage from "../posts/PostsPage";
 import UpdatePost from "../posts/UpdatePost";
+import InsertPost from "../posts/InsertPost";
 
 const TutorialRoutesArr = [
   { index: true, element: <Main /> },
@@ -51,6 +52,10 @@ const TutorialRoutesArr = [
   {
     path : 'posts/:id',
     element : <UpdatePost/>
+  },
+  {
+    path : 'newpost',
+    element : <InsertPost/>
   }
 ];
 
