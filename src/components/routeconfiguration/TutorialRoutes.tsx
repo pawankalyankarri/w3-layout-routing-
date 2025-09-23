@@ -10,6 +10,8 @@ import {
 import JsBody from "../javascriptcomponents/JsBody";
 import Employees from "../Employees";
 import EmployeeDetails from "../EmployeeDetails";
+import PostsPage from "../posts/PostsPage";
+import UpdatePost from "../posts/UpdatePost";
 
 const TutorialRoutesArr = [
   { index: true, element: <Main /> },
@@ -42,6 +44,13 @@ const TutorialRoutesArr = [
   {
     path : 'employees/:id',
     element : <EmployeeDetails/>
+  },
+  {path : 'posts',
+    element : <PostsPage/>
+  },
+  {
+    path : 'posts/:id',
+    element : <UpdatePost/>
   }
 ];
 

@@ -1,5 +1,5 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+
+import {  createContext, useContext, useState, type ReactNode } from "react"
 
 export type Emps = {
     id: number,
@@ -24,13 +24,34 @@ export type Emps = {
       bs: string,
     }
   }
-const EmpData = () =>{
-    let [data,setData] = useState<Emps[]>([])
-    useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/users").then((res)=>setData(res.data)).catch(err=>console.log(err))
-    },[])
-    return {data,setData}
+
+export type EmpContextType = {
+  info: Emps[];
+  setInfo: React.Dispatch<React.SetStateAction<Emps[]>>;
+};
+
+
+
+const EmpContext = createContext<EmpContextType | undefined>(undefined)
+
+export const EmpProvider = ({children}: {children:ReactNode})=>{
+    const [info,setInfo] = useState<Emps[]>([])
+    return(
+      <EmpContext.Provider value={{info,setInfo}}>
+        {children}
+      </EmpContext.Provider>
+    )
 }
-export default EmpData;
+
+const EmpData = ()=>{
+  const context = useContext(EmpContext)
+  if (!context) {
+    throw new Error("context is empty");
+  }
+
+  return context
+}
+
+export default EmpData
 
 

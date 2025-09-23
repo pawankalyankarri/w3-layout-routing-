@@ -1,36 +1,41 @@
-import { useEffect, useState } from "react";
-import type { Emps } from "./Employees";
-import axios from "axios";
+import type { Emps } from "./EmpData";
+
 import { useNavigate, useParams } from "react-router-dom";
 import EmpData from "./EmpData";
 
 
 const EmployeeDetails = () => {
-    let {data,setData} = EmpData()
+    let {info,setInfo} = EmpData()
+
     let params = useParams()
     let navigate = useNavigate()
-    // console.log(params)
+    console.log(params)
 
-    useEffect(()=>{
-        axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`).then(res=>setData(res.data)).catch(err=>console.log(err))
-    },[])
-    // let reqData:Emps | undefined = data.find(item => item.id === Number(params.id))
-    // console.log(reqData)
+    // useEffect(()=>{
+    //     axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`).then(res=>setData(res.data)).catch(err=>console.log(err))
+    // },[])
+    let reqData:Emps | undefined = info.find(item => item.id === Number(params.id))
+    console.log(reqData)
 
     function handleDelete(id:number):void{
-        setData(data.filter(item=>item.id !== id))
+        setInfo(info.filter(item=>item.id !== id))
         navigate("/employees")
     }
+
+   
     return(
         <div>
+            
             <div className="border p-5 m-4 flex justify-between">
                <div>
-                 <p>{data?.username}</p>
-                <p>{data?.email}</p>
-                <p>{data?.phone}</p>
+                 <p>{reqData?.username}</p>
+                <p>{reqData?.email}</p>
+                <p>{reqData?.phone}</p>
                </div>
                <div>
-                <button onClick={()=>handleDelete(Number(params.id))} >delete</button>
+                <br />
+                <button onClick={()=>handleDelete(Number(params.id))} className="cursor-pointer px-2 p-1 bg-black text-white font-bold rounded" >delete</button>
+                
                </div>
             </div>
         </div>
