@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import type {Emps}  from './Employees';
+import type {Emps}  from './EmpData';
 
 type Emp = {
     emp :Emps

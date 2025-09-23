@@ -7,6 +7,7 @@ import  NotFound from './components/NotFound.tsx'
 
 
 import TutorialRoutesArr from './components/routeconfiguration/TutorialRoutes.tsx'
+import { EmpProvider } from './components/EmpData.tsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <EmpProvider><RouterProvider router={router}></RouterProvider></EmpProvider>
   </StrictMode>,
 )
