@@ -13,6 +13,7 @@ import EmployeeDetails from "../EmployeeDetails";
 import PostsPage from "../posts/PostsPage";
 import UpdatePost from "../posts/UpdatePost";
 import InsertPost from "../posts/InsertPost";
+import EditDialog from "../reusebleshadcn/EditDialog";
 
 const TutorialRoutesArr = [
   { index: true, element: <Main /> },
@@ -51,7 +52,7 @@ const TutorialRoutesArr = [
   },
   {
     path : 'posts/:id',
-    element : <UpdatePost/>
+    element : <EditDialog/>
   },
   {
     path : 'newpost',

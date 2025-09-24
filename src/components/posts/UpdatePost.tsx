@@ -96,7 +96,9 @@ const UpdatePost = () => {
           </form>
         </div>
       )}
+      
     </div>
+    
   );
 };
 
