@@ -4,6 +4,16 @@ import type { EmpContextType } from "./EmpData";
 import ChildEmployee from "./ChildEmployee";
 import EmpData from "./EmpData";
 import { NavLink } from "react-router-dom";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { Button } from "./ui/button";
 // export type Emps = {
 //     id: number,
 //     name: string,
@@ -40,32 +50,35 @@ const Employees = () => {
     }
   }, [info, setInfo]);
   return (
-    <div>
-      <table className="table-auto border m-auto my-2 border-collapse border-spacing-2">
-        <thead className="">
-          <tr>
-            <th className="border px-2 py-1">UserName</th>
-            <th className="border px-2 py-1">Email</th>
-            <th className="border px-2 py-1">Phone</th>
-          </tr>
-        </thead>
-
-        <tbody>
+    <div>{
+      info.length === 0 ? (<div className="flex justify-center"><strong>Loading...</strong></div>):
+     
+      <Table className="table-auto border w-[90%] m-auto my-2 border-collapse border-spacing-2">
+        <TableHeader className="">
+          <TableRow className="font-bold">
+            <TableHead >UserName</TableHead>
+            <TableHead >Email</TableHead>
+            <TableHead >Phone</TableHead>
+            <TableHead >Modify Here</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody className="font-mono">
           {info.map((item) => {
             return (
-              <tr key={item.id} className="border">
-                <td className="border  px-2">{item.username}</td>
-                <td className="border  px-2">{item.email}</td>
-                <td className="border  px-2">{item.phone}</td>
-                <td className="border  p-2">
-                  <NavLink to={`/employees/${item.id}`} className="px-2 p-1 bg-green-500 text-white font-bold rounded" >edit</NavLink>
-                </td>
-              </tr>
+              <TableRow key={item.id} className="border">
+                <TableCell>{item.username}</TableCell>
+                <TableCell>{item.email}</TableCell>
+                <TableCell>{item.phone}</TableCell>
+                <TableCell >
+                  <NavLink to={`/employees/${item.id}`} ><Button>Edit</Button></NavLink>
+                </TableCell>
+              </TableRow>
             );
           })}
           {/* {data.map(item=><ChildEmployee data = {data} setData = {setData}  key={item.id} emp={item}/>)} */}
-        </tbody>
-      </table>
+        </TableBody>
+        
+      </Table> }
     </div>
   );
 };
