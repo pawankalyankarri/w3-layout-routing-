@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom"
 
 const Header = () => {
     return(
-        <div className="">
+        <div className=" bg-green-200">
             <ul className="flex justify-evenly p-5">
                 <li><NavLink to="tutorial">Tutorial</NavLink></li>
                 <li><NavLink to="reference">Reference</NavLink></li>
                 <li><NavLink to="exercises">Exercises</NavLink></li>
                 <li><NavLink to="certificates">Certificates</NavLink></li>
             </ul>
-            <ul className="flex justify-evenly p-5 bg-amber-400">
+            <ul className="flex justify-evenly p-5 bg-amber-200">
                 <li><NavLink to="js">Java script</NavLink></li>
                 <li><NavLink to="react">React</NavLink></li>
                 <li><NavLink to="html">HTML</NavLink></li>
