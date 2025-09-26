@@ -1,5 +1,5 @@
 "use client";
-
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import * as React from "react";
 import {
   AudioWaveform,
@@ -335,7 +335,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" {...props} className="font-serif">
       <SidebarHeader>
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
@@ -345,6 +345,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
+        <AnimatedThemeToggler/>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
