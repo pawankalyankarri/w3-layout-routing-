@@ -23,7 +23,6 @@ const TutorialRoutesArr = [
     children: JsSidebarOptions.map((item) => {
       return { path: `:${item.replace(" ", "_")}`, element: <JsBody /> };
     }),
-    
   },
   {
     path: "html",
@@ -40,24 +39,25 @@ const TutorialRoutesArr = [
     }),
   },
   {
-    path : 'employees',
-    element : <Employees/>
+    path: "employees",
+    element: <Employees />,
   },
   {
-    path : 'employees/:id',
-    element : <EmployeeDetails/>
-  },
-  {path : 'posts',
-    element : <PostsPage/>
+    path: "employees/:id",
+    element: <EmployeeDetails />,
   },
   {
-    path : 'posts/:id',
-    element : <EditDialog/>
+    path: "posts",
+    element: <PostsPage />,
   },
   {
-    path : 'newpost',
-    element : <InsertPost/>
-  }
+    path: "posts/:id",
+    element: <EditDialog />,
+  },
+  {
+    path: "posts/newpost",
+    element: <InsertPost />,
+  },
 ];
 
 export default TutorialRoutesArr;
