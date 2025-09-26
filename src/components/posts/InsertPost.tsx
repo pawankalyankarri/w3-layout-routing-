@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { PostType } from "./PostsPage";
+import { CoolMode } from "@/components/ui/cool-mode"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
@@ -68,7 +69,7 @@ const InsertPost = () => {
                   name="userId"
                   type="number"
                   max={10000}
-                  min={0}
+                  min={1}
                   value={npost.userId}
                   onChange={handleChange}
                   required
@@ -110,9 +111,10 @@ const InsertPost = () => {
                 />
               </div>
             </div>
-            <CardFooter className="w-full flex gap-2">
-              <Button className="w-[50%]" onClick={handleCancel}>Cancel</Button>
-              <Button type="submit" className="w-[50%]">Insert</Button>
+            <CardFooter className="w-full grid grid-cols-2 gap-2">
+              <Button className="w-full" onClick={handleCancel}>Cancel</Button>
+              {/* <CoolMode ><Button type="submit" className="w-full" >Insert</Button></CoolMode> */}
+              <Button type="submit" className="w-full" >Insert</Button>
               
               {/* <div className="gap-2 flex">
 

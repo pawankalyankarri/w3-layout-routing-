@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { Skeleton } from "../ui/skeleton";
 
 export type PostType = {
   userId: number | undefined;
@@ -49,7 +50,8 @@ const PostsPage = () => {
       </div>
 
       {posts.length === 0 ? (
-        <div className="flex justify-center items-center ">Loading Data...</div>
+        <div className="flex justify-center items-center ">Loading Data...
+        </div>
       ) : (
         <div className="w-full h-full p-1 gap-1.5 grid place-items-stretch justify-center grid-cols-3">
           {posts.map((item) => (
@@ -60,7 +62,7 @@ const PostsPage = () => {
             >
               <CardHeader>
                 <CardTitle>{item.title}</CardTitle>
-                <CardDescription className="text-black">
+                <CardDescription className="text-black  dark:text-white">
                   <strong className="font-bold text-md">userId :</strong>&nbsp;
                   {item.userId} <br />
                   <strong className="font-bold text-md">Id :</strong> &nbsp; {item.id}
@@ -79,7 +81,7 @@ const PostsPage = () => {
                 <strong>body : </strong>&nbsp;{item.body}
               </p></> */}
               </CardHeader>
-              <CardFooter className="flex justify-around">
+              <CardFooter className="grid grid-cols-2 gap-3">
                 <Button>
                   <NavLink to={`/posts/${item.id}`}>Edit</NavLink>
                 </Button>

@@ -13,15 +13,15 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Header from "../header/Header";
 import { Fragment } from "react/jsx-runtime";
 
 const SidebarPage = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   let arr = location.pathname.split("/").filter((i) => i);
-  console.log(arr);
+  // console.log(arr);
 
   return (
     <SidebarProvider>
@@ -40,16 +40,18 @@ const SidebarPage = () => {
                   const isLast = idx === arr.length - 1;
                   const path = `/${arr.slice(0, idx + 1).join("/")}`;
                   return (
-                    < div key={idx}>
+                    <BreadcrumbItem key={idx}>
                       {isLast ? (
-                        <BreadcrumbItem>{item}</BreadcrumbItem>
+                        <BreadcrumbPage className="capitalize">{item}</BreadcrumbPage>
                       ) : (
-                        <BreadcrumbItem >
-                          <BreadcrumbLink href={path}>{item}</BreadcrumbLink>
-                          <BreadcrumbSeparator className="hidden md:block" />
-                        </BreadcrumbItem>
+                        <BreadcrumbLink asChild className="capitalize">
+                          <Link to={path}>{item}</Link>
+                        </BreadcrumbLink>
                       )}
-                    </div>
+                      {!isLast && (
+                        <span className="text-lg">»</span>
+                      )}
+                    </BreadcrumbItem>
                   );
                 })}
 
@@ -66,7 +68,7 @@ const SidebarPage = () => {
             </Breadcrumb>
           </div>
         </header>
-        <div>
+        <div className="w-full sm:mx-0  mx-1">
           <Header />
         </div>
         {/* <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
