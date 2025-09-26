@@ -71,7 +71,7 @@ const EditDialog = () => {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="userid">UserId</Label>
-              <Input id="userid" type="number" max={5000} min={0} name="userId" value={post.userId} onChange={handleChange} />
+              <Input id="userid" type="number" max={10000} min={1} name="userId" value={post.userId} onChange={handleChange} />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="body">Body</Label>

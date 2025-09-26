@@ -12,10 +12,15 @@ import {
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+
+type PostTypeNoId = {
+    userId: number | undefined;
+    title: string;
+    body: string;
+}
 const InsertPost = () => {
-  let [npost, setNpost] = useState<PostType>({
-    userId: undefined,
-    id: 0,
+  let [npost, setNpost] = useState<PostTypeNoId>({
+    userId: 0,
     title: "",
     body: "",
   });
@@ -31,11 +36,16 @@ const InsertPost = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log(typeof npost.userId)
     axios
       .post("http://127.0.0.1:8000/posts/insert/", JSON.stringify(npost))
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     navigate("/posts");
+  }
+
+  function handleCancel(){
+    navigate("/posts")
   }
 
   return (
@@ -57,8 +67,11 @@ const InsertPost = () => {
                   
                   name="userId"
                   type="number"
+                  max={10000}
+                  min={0}
                   value={npost.userId}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -77,7 +90,7 @@ const InsertPost = () => {
               <div className="grid gap-2">
                 <Label htmlFor="">Title</Label>
                 <Input
-                  
+                  required
                   name="title"
                   type="text"
                   value={npost.title}
@@ -89,7 +102,7 @@ const InsertPost = () => {
               <div className="grid gap-2">
                 <Label htmlFor="">Body</Label>
                 <Input
-                  
+                  required
                   name="body"
                   type="text"
                   value={npost.body}
@@ -97,8 +110,10 @@ const InsertPost = () => {
                 />
               </div>
             </div>
-            <CardFooter className="">
-              <Button type="submit" className="w-full">Insert</Button>
+            <CardFooter className="w-full flex gap-2">
+              <Button className="w-[50%]" onClick={handleCancel}>Cancel</Button>
+              <Button type="submit" className="w-[50%]">Insert</Button>
+              
               {/* <div className="gap-2 flex">
 
               <Input
